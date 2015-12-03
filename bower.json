@@ -1,0 +1,12 @@
+{
+  "name": "ean-rates",
+  "version": "1.0.0",
+  "description": "ean-rates",
+  "main": "ean-rates.html",
+  "keywords": [
+    "polymer","web-components"
+  ],
+  "dependencies": {
+    "iron-ajax": "PolymerElements/iron-ajax"
+  }
+}
