@@ -1,6 +1,26 @@
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 <!--
 `<ean-rates>` Gets the rate of a hotel from https://book.api.ean.com/
+
+_url:
+https://book.api.ean.com/ean-services/rs/hotel/v3/avail?cid=
+&minorRev=99&apiKey=
+&locale=en_UK&currencyCode=GBP&sig=1b1303147475e80302ddbe2a25f77c1d&xml={{urlencode(xml)}}
+
+xml:
+<HotelRoomAvailabilityRequest>
+    <hotelId>106347</hotelId>
+    <arrivalDate>1/2/2016</arrivalDate>
+    <departureDate>1/4/2016</departureDate>
+    <includeDetails>true</includeDetails>
+    <RoomGroup>
+        <Room>
+            <numberOfAdults>2</numberOfAdults>
+        </Room>
+    </RoomGroup>
+</HotelRoomAvailabilityRequest>
+
+
 @demo demo.html
 -->
 
@@ -14,5 +34,6 @@
 <script>
   Polymer({
     is: "ean-rates"
+    
   });
 </script>
