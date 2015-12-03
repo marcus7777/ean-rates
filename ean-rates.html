@@ -1,0 +1,18 @@
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<!--
+`<ean-rates>` Gets the rate of a hotel from https://book.api.ean.com/
+@demo demo.html
+-->
+
+<dom-module id="ean-rates">
+  <template>
+    <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
+
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "ean-rates"
+  });
+</script>
