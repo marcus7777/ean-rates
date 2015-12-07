@@ -35,8 +35,6 @@ header('Content-Type: text/plain');
 
 print  _get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url) );
 
-// $array = json_decode($json,TRUE);
-echo $json;
 function _get_data ($url) {
   if (($response_data = file_get_contents($url))===false){
     echo "Error fetching Json\n";
