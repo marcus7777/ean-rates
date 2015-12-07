@@ -59,7 +59,7 @@ $json = json_encode($xml);
 echo $json;
 function _curl_get_data ($url) {
 	
-	print_r($url)
+	print_r($url);
 	
 	global $user_agent_full, $ao_post, $ao_post_active, $ao_user_origin;
 	$ch = curl_init();
