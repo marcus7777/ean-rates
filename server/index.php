@@ -34,13 +34,8 @@ header('Content-Type: text/plain');
 /* Continue */
 
 print  _get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url) );
-
 function _get_data ($url) {
-  if (($response_data = file_get_contents($url))===false){
-    echo "Error fetching Json\n";
-  } else {
-    return $response_data
-  }
+  return file_get_contents($url);
 }
 function parseRequestHeaders() {
         $headers = array();
