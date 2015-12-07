@@ -43,7 +43,7 @@ xml:
       return 0
     },
     _getUrl: function(server, sending) {
-      return server + "?u=" + encodeURI(sending)
+      return server + "?u=" + encodeURIComponent(sending)
     }
   });
 </script>
