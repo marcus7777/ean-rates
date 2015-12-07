@@ -52,15 +52,12 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: text/plain');
 /* Continue */
 
-$xml_string =  _curl_get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?'.urldecode($client_url));
+$xml_string =  _curl_get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url) );
 $xml = simplexml_load_string($xml_string);
 $json = json_encode($xml);
 // $array = json_decode($json,TRUE);
 echo $json;
 function _curl_get_data ($url) {
-	
-	print_r($url);
-	
 	global $user_agent_full, $ao_post, $ao_post_active, $ao_user_origin;
 	$ch = curl_init();
 	$timeout = 5;
