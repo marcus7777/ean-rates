@@ -41,8 +41,8 @@ xml:
     },
     getRate: function(data) {
     
-      var rate = data.HotelRoomAvailabilityResponse.HotelRoomResponse[0].RateInfos.RateInfo.RoomGroup.Room.ChargeableNightlyRates.[0].@rate +
-      data.HotelRoomAvailabilityResponse.HotelRoomResponse[0].RateInfos.RateInfo.RoomGroup.Room.ChargeableNightlyRates.[1].@rate
+      var rate = data.HotelRoomAvailabilityResponse.HotelRoomResponse[0].RateInfos.RateInfo.RoomGroup.Room.ChargeableNightlyRates[0].@rate +
+      data.HotelRoomAvailabilityResponse.HotelRoomResponse[0].RateInfos.RateInfo.RoomGroup.Room.ChargeableNightlyRates[1].@rate
       return rate
     },
     _getUrl: function(server, sending) {
