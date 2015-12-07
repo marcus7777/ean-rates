@@ -42,7 +42,7 @@ xml:
     getRate: function(data) {
       return 0
     },
-    getUrl: function(server, data) {
+    _getUrl: function(server, data) {
       return server + "?u=" + encodeURI(data)
     }
   });
