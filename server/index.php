@@ -51,7 +51,7 @@ header('Access-Control-Allow-Origin: *');
 /* Safety Feature */
 header('Content-Type: text/plain');
 /* Continue */
-$xml_string =  _curl_get_data(urldecode('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?'.$client_url));
+$xml_string =  _curl_get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?'.urldecode($client_url));
 $xml = simplexml_load_string($xml_string);
 $json = json_encode($xml);
 // $array = json_decode($json,TRUE);
