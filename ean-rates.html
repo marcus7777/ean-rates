@@ -54,7 +54,8 @@ xml:
   Polymer({
     is: "ean-rates",
     properties: {
-      date: Date,
+      date:{type: Date, value: new Date()},
+      eanId: {value: 55505},
       nights: {value: 2},
       hotelId: {value: 106347},
       currencyCode: {value: "GBP"},
