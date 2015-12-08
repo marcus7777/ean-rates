@@ -7,6 +7,7 @@
     "polymer","web-components"
   ],
   "dependencies": {
-    "iron-ajax": "PolymerElements/iron-ajax"
+    "iron-ajax": "PolymerElements/iron-ajax",
+    "json-select": "marcus7777/json-select"
   }
 }
