@@ -29,6 +29,7 @@ xml:
   <template>
     <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
     <json-select json="{{data}}" select=".@total" output="{{totals}}" ></json-select>
+    <json-select json="{{data}}" select=".deepLink" output="{{links}}" ></json-select>
     <div>{{rate}}</div>
   </template>
 </dom-module>
@@ -41,13 +42,13 @@ xml:
   }
   function naturalCompare(a, b) {
     var ax = [], bx = [];
-    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
-    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
+    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) })
+    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) })
     while(ax.length && bx.length) {
-      var an = ax.shift();
-      var bn = bx.shift();
-      var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
-      if(nn) return nn;
+      var an = ax.shift()
+      var bn = bx.shift()
+      var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1])
+      if (nn) return nn
     }
     return ax.length - bx.length;
   }
@@ -60,9 +61,10 @@ xml:
       hotelId: {value: 106347},
       currencyCode: {value: "GBP"},
       moneySym: {value:"£"},
+      link: {computed: '_getLink(links, totals)'},
       sharedSecret: {value:"cvh43jpjctvt2"},
       rate: {computed: 'getRate(totals, moneySym)'},
-      locale: {value: "en_UK"}
+      locale: {value: "en_UK"},
       apiKey: {value: "kycy4ngtan59c6mcar6wh6b2"},
       server: {value: "/bower_components/ean-rates/server/"},
       _url:{computed: "_getUrl(server, _sending)"},
@@ -79,6 +81,9 @@ xml:
       if (+totals.length > 0) {
         return moneySym + totals.sort(naturalCompare)[0]
       }
+    },
+    _getLink(links, totals){
+      return links[totals.indexOf(totals.sort(naturalCompare)[0])]
     },
     _getSig: function(apiKey, sharedSecret) {
       var a=(new Date).getTime()/1000
