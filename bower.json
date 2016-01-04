@@ -8,7 +8,6 @@
   ],
   "dependencies": {
     "iron-ajax": "PolymerElements/iron-ajax",
-    "json-select": "marcus7777/json-select",
-    "js-md5": "marcus7777/js-md5"
+    "json-select": "marcus7777/json-select"
   }
 }
