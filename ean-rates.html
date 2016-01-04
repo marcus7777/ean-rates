@@ -89,7 +89,7 @@ xml:
     _getSig: function(apiKey, sharedSecret) {
       var a=(new Date).getTime()/1000
       a=Math.floor(a)
-      return hex_md5(apiKey+sharedSecret+a)
+      return md5(apiKey+sharedSecret+a)
     },
     _getUrl: function(server, sending) {
       return server + "?u=" + encodeURI(encodeURIComponent(sending))
