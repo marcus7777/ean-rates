@@ -1,4 +1,6 @@
 <?php
+include 'config.php';
+
 ini_set('memory_limit', '1024K');
 /* Do not modify above this line. */
 $user_agent = 'AnyOrigin/1.0; Public API';
@@ -33,7 +35,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: text/plain');
 /* Continue */
 
-print  _get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url) );
+print  _get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url). $add_to_url );
 function _get_data ($url) {
   return file_get_contents($url);
 }
