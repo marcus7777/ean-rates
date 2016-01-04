@@ -35,6 +35,10 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: text/plain');
 /* Continue */
 
+$timestamp = gmdate('U'); // 1427233130 (Tue, 24 Mar 2015 21:38:50 +0000)
+$sig = md5($apiKey . $secret . $timestamp);
+$add_to_url = "&apiKey=" . $apiKey . "&sig=" . $sig;
+
 print  _get_data('https://book.api.ean.com/ean-services/rs/hotel/v3/avail?' . urldecode($client_url). $add_to_url );
 function _get_data ($url) {
   return file_get_contents($url);
