@@ -63,10 +63,8 @@ xml:
       currencyCode: {value: "GBP"},
       moneySym: {value:"£"},
       link: {computed: '_getLink(links, totals)'},
-      sharedSecret: {value:"cvh43jpjctvt2"},
       rate: {computed: 'getRate(totals, moneySym)'},
       locale: {value: "en_UK"},
-      apiKey: {value: "kycy4ngtan59c6mcar6wh6b2"},
       server: {value: "/bower_components/ean-rates/server/index.php"},
       _url:{computed: "_getUrl(server, _sending)"},
       _arrivalDay: {computed:"_getArrivalDay(date)"},
@@ -75,8 +73,7 @@ xml:
       _departureMonth: {computed:"_getDepartureMonth(date, nights)"},
       _arrivalYear: {computed:"_getArrivalYear(date)"},
       _departureYear: {computed:"_getDepartureYear(date, nights)"},
-      _sending:{computed:"_getSending(eanId, apiKey, currencyCode, locale, hotelId,_arrivalDay,_departureDay,_arrivalMonth,_departureMonth,_arrivalYear,_departureYear,_sig)"},
-      _sig: {computed:"_getSig(apiKey, sharedSecret)"}
+      _sending:{computed:"_getSending(eanId, apiKey, currencyCode, locale, hotelId,_arrivalDay,_departureDay,_arrivalMonth,_departureMonth,_arrivalYear,_departureYear)"}
     },
     getRate: function(totals, moneySym) {
       if (+totals.length > 0) {
@@ -86,16 +83,11 @@ xml:
     _getLink: function(links, totals){
       return links[totals.indexOf(totals.sort(naturalCompare)[0])]
     },
-    _getSig: function(apiKey, sharedSecret) {
-      var a=(new Date).getTime()/1000
-      a=Math.floor(a)
-      return md5(apiKey+sharedSecret+a)
-    },
     _getUrl: function(server, sending) {
       return server + "?u=" + encodeURI(encodeURIComponent(sending))
     },
-    _getSending: function(eanId, apiKey, currencyCode, locale, hotelId, arrivalDay, departureDay, arrivalMonth, departureMonth, arrivalYear, departureYear, sig) {
-      return "cid="+eanId+"&minorRev=99&apiKey="+apiKey+"&locale="+locale+"&currencyCode="+currencyCode+"&sig="+sig+"&xml=%3CHotelRoomAvailabilityRequest%3E%0A%20%20%20%20%3ChotelId%3E"+hotelId+"%3C%2FhotelId%3E%0A%20%20%20%20%3CarrivalDate%3E"+arrivalMonth+"%2F"+arrivalDay+"%2F"+arrivalYear+"%3C%2FarrivalDate%3E%0A%20%20%20%20%3CdepartureDate%3E"+departureMonth+"%2F"+departureDay+"%2F"+departureYear+"%3C%2FdepartureDate%3E%0A%20%20%20%20%3CincludeDetails%3Etrue%3C%2FincludeDetails%3E%0A%20%20%20%20%3CRoomGroup%3E%0A%20%20%20%20%20%20%20%20%3CRoom%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CnumberOfAdults%3E2%3C%2FnumberOfAdults%3E%0A%20%20%20%20%20%20%20%20%3C%2FRoom%3E%0A%20%20%20%20%3C%2FRoomGroup%3E%0A%3C%2FHotelRoomAvailabilityRequest%3E"
+    _getSending: function(eanId, currencyCode, locale, hotelId, arrivalDay, departureDay, arrivalMonth, departureMonth, arrivalYear, departureYear) {
+      return "cid="+eanId+"&minorRev=99&locale="+locale+"&currencyCode="+currencyCode+"&xml=%3CHotelRoomAvailabilityRequest%3E%0A%20%20%20%20%3ChotelId%3E"+hotelId+"%3C%2FhotelId%3E%0A%20%20%20%20%3CarrivalDate%3E"+arrivalMonth+"%2F"+arrivalDay+"%2F"+arrivalYear+"%3C%2FarrivalDate%3E%0A%20%20%20%20%3CdepartureDate%3E"+departureMonth+"%2F"+departureDay+"%2F"+departureYear+"%3C%2FdepartureDate%3E%0A%20%20%20%20%3CincludeDetails%3Etrue%3C%2FincludeDetails%3E%0A%20%20%20%20%3CRoomGroup%3E%0A%20%20%20%20%20%20%20%20%3CRoom%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CnumberOfAdults%3E2%3C%2FnumberOfAdults%3E%0A%20%20%20%20%20%20%20%20%3C%2FRoom%3E%0A%20%20%20%20%3C%2FRoomGroup%3E%0A%3C%2FHotelRoomAvailabilityRequest%3E"
     },
     _getArrivalDay: function(date) {
       return date.getUTCDate()
