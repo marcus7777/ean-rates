@@ -30,11 +30,12 @@ xml:
     <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
     <json-select json="{{data}}" select=".@total" output="{{totals}}" ></json-select>
     <json-select json="{{data}}" select=".deepLink" output="{{links}}" ></json-select>
+    <p>hi</p>
     <div>{{rate}}</div>
   </template>
 </dom-module>
 <script>
-;(function () {
+'use strict';
   function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
@@ -82,7 +83,7 @@ xml:
         return moneySym + totals.sort(naturalCompare)[0]
       }
     },
-    _getLink(links, totals){
+    _getLink: function(links, totals){
       return links[totals.indexOf(totals.sort(naturalCompare)[0])]
     },
     _getSig: function(apiKey, sharedSecret) {
@@ -99,21 +100,20 @@ xml:
     _getArrivalDay: function(date) {
       return date.getUTCDate()
     },
-    _getArrivalDay: function(date, nights) {
+    _getDepartureDay: function(date, nights) {
       return addDays(date, nights).getUTCDate()
     },
     _getArrivalMonth: function(date) {
       return date.getUTCMonth() + 1
     },
-    _getArrivalMonth: function(date, nights) {
+    _getDepartureMonth: function(date, nights) {
       return addDays(date, nights).getUTCMonth() + 1
     },
     _getArrivalYear: function(date) {
       return date.getUTCFullYear()
     },
-    _getArrivalYear: function(date, nights) {
+    _getDepartureYear: function(date, nights) {
       return addDays(date, nights).getUTCFullYear()
     }
   })
-})
 </script>
