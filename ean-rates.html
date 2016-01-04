@@ -30,7 +30,7 @@ xml:
     <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
     <json-select json="{{data}}" select=".@total" output="{{totals}}" ></json-select>
     <json-select json="{{data}}" select=".deepLink" output="{{links}}" ></json-select>
-    <div>{{rate}}</div>
+    <a href="{{link}}">{{rate}}</a>
   </template>
 </dom-module>
 <script>
