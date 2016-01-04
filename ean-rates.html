@@ -73,7 +73,7 @@ xml:
       _departureMonth: {computed:"_getDepartureMonth(date, nights)"},
       _arrivalYear: {computed:"_getArrivalYear(date)"},
       _departureYear: {computed:"_getDepartureYear(date, nights)"},
-      _sending:{computed:"_getSending(eanId, apiKey, currencyCode, locale, hotelId,_arrivalDay,_departureDay,_arrivalMonth,_departureMonth,_arrivalYear,_departureYear)"}
+      _sending:{computed:"_getSending(eanId, currencyCode, locale, hotelId,_arrivalDay,_departureDay,_arrivalMonth,_departureMonth,_arrivalYear,_departureYear)"}
     },
     getRate: function(totals, moneySym) {
       if (+totals.length > 0) {
