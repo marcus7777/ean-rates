@@ -38,7 +38,7 @@ xml:
 'use strict';
   function addDays(date, days) {
     var result = new Date(date);
-    result.setDate(result.getDate() + days);
+    result.setDate(result.getDate() + (+days));
     return result;
   }
   function naturalCompare(a, b) {
