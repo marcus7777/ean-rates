@@ -30,7 +30,8 @@ xml:
     <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
     <json-select json="{{data}}" select=".@total" output="{{totals}}" ></json-select>
     <json-select json="{{data}}" select=".deepLink" output="{{links}}" ></json-select>
-    Expedia Rate From <br />{{rate}}
+    <json-select json="{{data}}" select=".verboseMessage" output="{{verboseMessage}}" ></json-select>
+    Expedia Rate From <br />{{rate}} {{message}}
   </template>
 </dom-module>
 <script>
@@ -65,6 +66,7 @@ xml:
       server: {value: "/bower_components/ean-rates/server/index.php"},
       link: {computed: '_getLink(links, totals)', notify: true},
       rate: {computed: 'getRate(totals, moneySym)', notify: true},
+      message:{computed:'getMassage(verboseMessage)'},
       _url:{computed: "_getUrl(server, _sending)"},
       _arrivalDay: {computed:"_getArrivalDay(date)"},
       _departureDay: {computed:"_getDepartureDay(date, nights)"},
@@ -73,6 +75,11 @@ xml:
       _arrivalYear: {computed:"_getArrivalYear(date)"},
       _departureYear: {computed:"_getDepartureYear(date, nights)"},
       _sending:{computed:"_getSending(eanId, currencyCode, locale, hotelId,_arrivalDay,_departureDay,_arrivalMonth,_departureMonth,_arrivalYear,_departureYear)"}
+    },
+    getMassage: function(verboseMessage){
+      if (+verboseMessage.length > 0) {
+        return verboseMessage[0]
+      }
     },
     getRate: function(totals, moneySym) {
       if (+totals.length > 0) {
