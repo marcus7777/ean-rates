@@ -30,7 +30,7 @@ xml:
     <iron-ajax auto url="{{_url}}" handle-as="json" last-response="{{data}}"></iron-ajax>
     <json-select json="{{data}}" select=".@total" output="{{totals}}" ></json-select>
     <json-select json="{{data}}" select=".deepLink" output="{{links}}" ></json-select>
-    <a href="{{link}}">{{rate}}</a>
+    Expedia Rate From <br />{{rate}}
   </template>
 </dom-module>
 <script>
@@ -61,10 +61,10 @@ xml:
       hotelId: {value: 106347},
       currencyCode: {value: "GBP"},
       moneySym: {value:"£"},
-      link: {computed: '_getLink(links, totals)'},
-      rate: {computed: 'getRate(totals, moneySym)'},
       locale: {value: "en_UK"},
       server: {value: "/bower_components/ean-rates/server/index.php"},
+      link: {computed: '_getLink(links, totals)', notify: true},
+      rate: {computed: 'getRate(totals, moneySym)', notify: true},
       _url:{computed: "_getUrl(server, _sending)"},
       _arrivalDay: {computed:"_getArrivalDay(date)"},
       _departureDay: {computed:"_getDepartureDay(date, nights)"},
