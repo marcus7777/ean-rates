@@ -87,7 +87,7 @@ xml:
       }
     },
     _getLink: function(links, totals){
-      return decodeURIComponent(links[totals.indexOf(totals.sort(naturalCompare)[0])])
+      return links[totals.indexOf(totals.sort(naturalCompare)[0])].replace(/&amp;/g, '&');
     },
     _getUrl: function(server, sending) {
       return server + "?u=" + encodeURI(encodeURIComponent(sending))
